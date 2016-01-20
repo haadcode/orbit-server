@@ -1,0 +1,32 @@
+{
+  "name": "orbit-server",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Haad",
+  "license": "MIT",
+  "engines" : {
+    "node" : "^4.x.x"
+  },
+  "main": "src/index.js",
+  "dependencies": {
+    "aerospike": "^1.0.52",
+    "asyncawait": "^1.0.1",
+    "bluebird": "^3.0.2",
+    "body-parser": "^1.14.1",
+    "bs58": "^3.0.0",
+    "du": "^0.1.0",
+    "express": "^4.13.3",
+    "librato-node": "^4.0.2",
+    "lodash": "^3.10.1",
+    "log4js": "^0.6.29",
+    "orbit-client": "file:../orbit-client"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "supertest": "^1.1.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node src/index.js"
+  }
+}

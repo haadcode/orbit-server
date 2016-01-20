@@ -1,0 +1,5 @@
+*sublime*
+node_modules/
+users/
+debug.log
+Vagrantfile
