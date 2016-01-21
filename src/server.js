@@ -128,7 +128,8 @@ var verifyMessage = async((hash, channel) => {
     if(message.seq <= channel.seq)
       throw `Wrong sequence (message: ${message.seq}, channel: ${channel.seq})`;
 
-    verified = Encryption.verify(message.payload, message.pubkey, message.sig, message.seq, channel.modes.r ? channel.modes.r.password : '');
+    let payload = message.target ? message.target : message.payload; // compatibility with Orbit's old data structure
+    verified = Encryption.verify(payload, message.pubkey, message.sig, message.seq, channel.modes.r ? channel.modes.r.password : '');
   } catch(e) {
     throw "Invalid request: " + e.toString();
   }
