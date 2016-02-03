@@ -290,6 +290,9 @@ module.exports = function(ipfsInstance, ipfsNodeInfo, serverConfig) {
   if(serverConfig.metricsInterval === undefined)
     serverConfig.metricsInterval = 60000;
 
+  if(serverConfig.userDataPath && !fs.existsSync(serverConfig.userDataPath))
+    fs.mkdirSync(serverConfig.userDataPath);
+
   if(!ipfsInstance)
     return null;
 

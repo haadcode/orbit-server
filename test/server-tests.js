@@ -23,9 +23,7 @@ var serverConfig = {
   verifyMessages: false // TODO: set to true and verify messages in the tests
 }
 
-// Create the userDataPath in case it doesn't exist
-if(!fs.existsSync(serverConfig.userDataPath))
-  fs.mkdirSync(serverConfig.userDataPath);
+var ipfsPath = './temp';
 
 var username  = 'test';
 var password  = 'test123';
@@ -45,7 +43,7 @@ var invalidPasswordError    = { status: "error", message: "Invalid username or p
 
 const startServer = async (() => {
   return new Promise(async((resolve, reject) => {
-    const ipfsd  = await(ipfsDaemon());
+    const ipfsd  = await(ipfsDaemon({ directory: ipfsPath }));
     const server = Server(ipfsd.daemon, ipfsd.nodeInfo, serverConfig);
     resolve(server);
   }));
@@ -63,6 +61,23 @@ describe('Network Server', async(() => {
   }));
 
   after(function(done) {
+    var rmDir = function(dirPath) {
+      try { var files = fs.readdirSync(dirPath); }
+      catch(e) { return; }
+      if (files.length > 0)
+        for (var i = 0; i < files.length; i++) {
+          var filePath = dirPath + '/' + files[i];
+          if (fs.statSync(filePath).isFile())
+            fs.unlinkSync(filePath);
+          else
+            rmDir(filePath);
+        }
+      fs.rmdirSync(dirPath);
+    };
+
+    rmDir(serverConfig.userDataPath);
+    rmDir(ipfsPath);
+
     server.shutdown();
     done();
   });
@@ -401,25 +416,6 @@ describe('Network Server', async(() => {
       });
     });
 
-  });
-
-  after(function(done) {
-    var rmDir = function(dirPath) {
-      try { var files = fs.readdirSync(dirPath); }
-      catch(e) { return; }
-      if (files.length > 0)
-        for (var i = 0; i < files.length; i++) {
-          var filePath = dirPath + '/' + files[i];
-          if (fs.statSync(filePath).isFile())
-            fs.unlinkSync(filePath);
-          else
-            rmDir(filePath);
-        }
-      fs.rmdirSync(dirPath);
-    };
-
-    rmDir(serverConfig.userDataPath);
-    done();
   });
 
 }));

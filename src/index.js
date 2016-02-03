@@ -21,9 +21,6 @@ const serverConfig = {
   metricsInterval: 60000
 }
 
-if(!fs.existsSync(path.resolve(process.cwd(), "./users")))
-  fs.mkdirSync(path.resolve(process.cwd(), "./users"));
-
 const startService = async (() => {
   return new Promise(async((resolve, reject) => {
     const ipfsd = await(ipfsDaemon());
