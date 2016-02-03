@@ -2,7 +2,7 @@
 
 var crypto     = require('crypto');
 var Base58     = require('bs58');
-var Encryption = require('orbit-client/src/Encryption');
+var Encryption = require('orbit-common/lib/Encryption');
 
 class User {
   constructor(username, password, salt, networkId) {

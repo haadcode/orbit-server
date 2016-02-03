@@ -1,15 +1,15 @@
 {
   "name": "orbit-server",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "author": "Haad",
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/haadcode/orbit-server"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haadcode/orbit-server"
   },
-  "engines" : {
-    "node" : "^4.x.x"
+  "engines": {
+    "node": "^4.x.x"
   },
   "main": "src/index.js",
   "dependencies": {
@@ -23,7 +23,7 @@
     "librato-node": "^4.0.2",
     "lodash": "^3.10.1",
     "log4js": "^0.6.29",
-    "orbit-client": "file:../orbit-client"
+    "orbit-common": "^0.1.0"
   },
   "devDependencies": {
     "mocha": "^2.3.4",
