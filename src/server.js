@@ -13,10 +13,10 @@ var DatabaseEvents = Database.events;
 var ipfsAPI        = require('orbit-common/lib/ipfs-api-promised');
 var Encryption     = require('orbit-common/lib/Encryption');
 var Keystore       = require('orbit-common/lib/Keystore');
+var logger         = require('orbit-common/lib/logger');
+var utils          = require('orbit-common/lib/utils');
 var User           = require('./User');
 var Metrics        = require('./metrics');
-var logger         = require('./logger');
-var utils          = require('./utils');
 
 // var http           = require('http');
 // http.globalAgent.maxSockets = 1;

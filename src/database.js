@@ -6,8 +6,8 @@ var EventEmitter = require('events').EventEmitter;
 var async        = require('asyncawait/async');
 var await        = require('asyncawait/await');
 var Promise      = require('bluebird');
+var logger       = require('orbit-common/lib/logger');
 var Channel      = require('./models/Channel');
-var logger       = require('./logger');
 
 /* DB */
 var events = new EventEmitter();

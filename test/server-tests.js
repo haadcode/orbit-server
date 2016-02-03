@@ -7,10 +7,10 @@ var await      = require('asyncawait/await');
 var Promise    = require('bluebird');
 var ipfsDaemon = require('orbit-common/lib/ipfs-daemon');
 var Keystore   = require('orbit-common/lib/Keystore');
+var logger     = require('orbit-common/lib/logger');
+var utils      = require('orbit-common/lib/utils');
 var Server     = require('../src/server');
 var User       = require('../src/User');
-var logger     = require('../src/logger');
-var utils      = require('../src/utils');
 
 var pubkey  = Keystore.getKeys().publicKey;
 var privkey = Keystore.getKeys().privateKey;

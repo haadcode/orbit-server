@@ -5,9 +5,9 @@ var path       = require('path');
 var async      = require('asyncawait/async');
 var await      = require('asyncawait/await');
 var ipfsDaemon = require('orbit-common/lib/ipfs-daemon');
+var logger     = require('orbit-common/lib//logger');
+var utils      = require('orbit-common/lib//utils');
 var server     = require('./server');
-var logger     = require('./logger');
-var utils      = require('./utils');
 
 require('http').globalAgent.maxSockets = Infinity;
 

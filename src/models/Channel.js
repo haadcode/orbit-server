@@ -3,7 +3,7 @@
 var _            = require('lodash');
 var aerospike    = require('aerospike');
 var Promise      = require('bluebird');
-var logger       = require('../logger');
+var logger       = require('orbit-common/lib/logger');
 
 class Channel {
   constructor(hash) {
