@@ -43,7 +43,7 @@ var invalidPasswordError    = { status: "error", message: "Invalid username or p
 
 const startServer = async (() => {
   return new Promise(async((resolve, reject) => {
-    const ipfsd  = await(ipfsDaemon({ directory: ipfsPath }));
+    const ipfsd  = await(ipfsDaemon());
     const server = Server(ipfsd.daemon, ipfsd.nodeInfo, serverConfig);
     resolve(server);
   }));
@@ -61,6 +61,8 @@ describe('Network Server', async(() => {
   }));
 
   after(function(done) {
+    server.shutdown();
+
     var rmDir = function(dirPath) {
       try { var files = fs.readdirSync(dirPath); }
       catch(e) { return; }
@@ -78,7 +80,6 @@ describe('Network Server', async(() => {
     rmDir(serverConfig.userDataPath);
     rmDir(ipfsPath);
 
-    server.shutdown();
     done();
   });
 
