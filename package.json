@@ -1,9 +1,13 @@
 {
   "name": "orbit-server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "author": "Haad",
   "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/haadcode/orbit-server"
+  },
   "engines" : {
     "node" : "^4.x.x"
   },
