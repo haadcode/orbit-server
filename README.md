@@ -4,8 +4,6 @@ Server for Orbit networks
 
 Requires Aerospike, see http://www.aerospike.com/docs/operations/install/
 
-Also requires `orbit-client` (https://github.com/haadcode/orbit-client) to be cloned in `../` atm.
-
 ***orbit-server is still WIP. Please report any problems and give your feedback in the issues!***
 
 ## Run
