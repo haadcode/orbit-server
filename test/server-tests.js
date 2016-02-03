@@ -19,7 +19,7 @@ var serverConfig = {
   networkId: "anon-test",
   networkName: "Anonymous Networks TEST",
   salt: "thisisthenetworksalt",
-  userDataPath: path.resolve("/tmp/anon-server-tests"),
+  userDataPath: path.resolve("./anon-server-tests"),
   verifyMessages: false // TODO: set to true and verify messages in the tests
 }
 
