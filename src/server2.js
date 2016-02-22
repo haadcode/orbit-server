@@ -13,11 +13,11 @@ let sub = redis.createClient({ host: host, port: port, auth_pass: process.env.RE
 io.adapter(adapter({ pubClient: pub, subClient: sub }));
 
 sub.on('message', (channel, data) => {
-  io.sockets.in(channel).emit('message', data);
+  io.sockets.in(channel).emit('message', channel, data);
 });
 
 io.on('connection', function (socket) {
-  console.log("> Client connected from", socket.request.connection._peername);
+  console.log("Client connected from", socket.request.connection._peername);
 
   socket.on('subscribe', function (event) {
     sub.subscribe(event.channel);
@@ -25,7 +25,6 @@ io.on('connection', function (socket) {
     console.log("Client joined channel", event.channel);
 
     socket.on('message', function (event) {
-      // console.log("-->", event)
       pub.publish(event.channel, event.message);
     });
   });

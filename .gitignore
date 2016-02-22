@@ -4,3 +4,6 @@ users/
 debug.log
 npm-debug.log
 Vagrantfile
+.vagrant/
+dump.rdb
+redis.conf
