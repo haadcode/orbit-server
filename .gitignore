@@ -2,4 +2,5 @@
 node_modules/
 users/
 debug.log
+npm-debug.log
 Vagrantfile
