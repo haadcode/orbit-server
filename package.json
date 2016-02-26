@@ -24,7 +24,6 @@
     "mocha": "^2.3.4"
   },
   "scripts": {
-    "test": "mocha",
-    "start": "node src/server2.js"
+    "start": "node src/server.js"
   }
 }

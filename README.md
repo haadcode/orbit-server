@@ -1,6 +1,6 @@
 # orbit-server
 
-Server for Orbit networks. A simple wrapper for Redis pubsub. Requires redis server to run at `locahost:<redis port>`
+Server for [OrbitDB](https://github.com/haadcode/orbit-db). A simple wrapper for Redis. Requires redis server to run at `locahost:<redis port>`
 
 ## Run
 ```
@@ -14,3 +14,6 @@ npm start
 ```
 npm test
 ```
+
+## TODO
+- Metrics
