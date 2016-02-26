@@ -9,6 +9,7 @@ const port = process.env.REDIS_PORT ? process.env.REDIS_PORT : 6379;
 
 let pub = redis.createClient({ host: host, port: port, auth_pass: process.env.REDIS_PASSWORD });
 let sub = redis.createClient({ host: host, port: port, auth_pass: process.env.REDIS_PASSWORD });
+let client = redis.createClient({ host: host, port: port, auth_pass: process.env.REDIS_PASSWORD });
 
 io.adapter(adapter({ pubClient: pub, subClient: sub }));
 
@@ -24,8 +25,13 @@ io.on('connection', function (socket) {
     socket.join(event.channel);
     console.log("Client joined channel", event.channel);
 
+    client.get(event.channel, (err, res) => {
+      socket.emit('latest', event.channel, res);
+    });
+
     socket.on('message', function (event) {
       pub.publish(event.channel, event.message);
+      client.set(event.channel, event.message);
     });
   });
 
