@@ -26,12 +26,14 @@ io.on('connection', function (socket) {
     console.log("Client joined channel", event.channel);
 
     client.get(event.channel, (err, res) => {
-      socket.emit('latest', event.channel, res);
+      socket.emit('subscribed', event.channel, res);
     });
 
-    socket.on('message', function (event) {
-      pub.publish(event.channel, event.message);
-      client.set(event.channel, event.message);
+    socket.on('message', function (e) {
+      if(e.channel === event.channel) {
+        pub.publish(e.channel, e.message);
+        client.set(e.channel, e.message);
+      }
     });
   });
 
