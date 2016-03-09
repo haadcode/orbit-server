@@ -31,7 +31,6 @@ io.on('connection', function (socket) {
 
     socket.on('message', function (a) {
       const e = JSON.parse(a);
-      console.log(e, a)
       if(e.channel === event.channel) {
         pub.publish(e.channel, e.message);
         client.set(e.channel, e.message);
