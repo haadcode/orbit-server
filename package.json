@@ -11,18 +11,18 @@
   "engines": {
     "node": "^4.x.x"
   },
-  "main": "src/server2.js",
+  "main": "src/index.js",
   "dependencies": {
-    "lodash": "^3.10.1",
+    "lodash": "^4.11.1",
+    "logplease": "^1.2.5",
     "redis": "^2.4.2",
     "socket.io": "1.3.7",
     "socket.io-client": "1.3.7",
     "socket.io-redis": "0.1.4"
   },
   "devDependencies": {
-    "mocha": "^2.3.4"
   },
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/index.js"
   }
 }

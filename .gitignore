@@ -1,8 +1,7 @@
 *sublime*
 node_modules/
 users/
-debug.log
-npm-debug.log
+*.log
 Vagrantfile
 .vagrant/
 dump.rdb
