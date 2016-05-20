@@ -10,6 +10,8 @@ const logger = Logger.create('server', { color: Logger.Colors.Magenta, filename:
 const host = 'localhost'
 const port = process.env.REDIS_PORT ? process.env.REDIS_PORT : 6379;
 
+let peers = {};
+
 class OrbitServer {
   static start() {
     let io = IO(3333);
@@ -24,15 +26,18 @@ class OrbitServer {
     });
 
     io.on('connection', function (socket) {
-      logger.info("Client connected from " + JSON.stringify(socket.request.connection._peername));
+      logger.info("Client connected from " + JSON.stringify(socket.request.connection._peername), socket.request.connection);
 
       socket.on('subscribe', function (event) {
         sub.subscribe(event.channel);
         socket.join(event.channel);
         logger.info("Client joined channel #" + event.channel);
+        logger.info("Client is at: " + event.address);
+        peers[event.peerId] = event.address;
 
         client.get(event.channel, (err, res) => {
-          socket.emit('subscribed', event.channel, res);
+          console.log("PEERS", peers)
+          socket.emit('subscribed', event.channel, res, peers);
         });
 
         socket.on('message', function (a) {
