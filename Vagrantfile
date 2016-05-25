@@ -1,13 +1,13 @@
-redis_password = ""
-redis_port = ""
-digital_ocean_token = ""
+redis_port = "55555"
+redis_password = "this_should_be_a_very_long_password"
+digital_ocean_token = "insert_your_token_here"
 
 Vagrant.configure(2) do |config|
   config.vm.box = "digital_ocean"
   config.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
-  config.vm.define "test" do |node|
+  config.vm.define "orbit-server" do |node|
     node.vm.provision "shell", inline: <<-SHELL
       sudo apt-get update
       sudo apt-get install -y python gcc make g++ git build-essential tcl8.5

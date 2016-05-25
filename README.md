@@ -15,5 +15,18 @@ npm start
 npm test
 ```
 
+## Deploy
+
+*Requires [Vagrant](https://www.vagrantup.com/downloads.html) to deploy*
+
+Open [Vagrantfile]() and set Redis' password and port and your Digital Ocean token.
+
+Run:
+```
+vagrant up orbit-server
+vagrant ssh orbit-server
+screen -r
+```
+
 ## TODO
 - Metrics
