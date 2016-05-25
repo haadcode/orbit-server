@@ -2,7 +2,7 @@
 node_modules/
 users/
 *.log
-Vagrantfile
+Vagrantfile.local
 .vagrant/
 dump.rdb
 redis.conf
